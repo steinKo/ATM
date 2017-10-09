@@ -1,0 +1,1 @@
+initctl restart helloworld
