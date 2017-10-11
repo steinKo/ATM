@@ -4,6 +4,7 @@ import java.util.concurrent.CountDownLatch;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 
 import steinKo.ATM.domain.Bank;
@@ -14,12 +15,21 @@ import steinKo.ATM.repository.BankRepository;
 public class BankFactory implements Runnable {
 
 	private ApplicationContext applicationContext;
+	private SpringApplicationBuilder springApplicationBuilder;
+	
+	
 	private CountDownLatch countDownLatch;
 	private final Logger logger = LoggerFactory.getLogger(BankFactory.class);
 
-	public BankFactory(ApplicationContext applicationContext, CountDownLatch countDownLatch) {
+	public BankFactory(ApplicationContext applicationContext, SpringApplicationBuilder springApplicationBuilder, CountDownLatch countDownLatch) {
 		this.applicationContext = applicationContext;
+		this.springApplicationBuilder = springApplicationBuilder;
 		this.countDownLatch = countDownLatch;
+	}
+	
+	private  void loadApplicationContext()
+	{ springApplicationBuilder.sources(WebConfig.class);
+		
 	}
 
 	private void createBank() {
@@ -54,6 +64,7 @@ public class BankFactory implements Runnable {
 	public void run() {
 
 		createBank();
+		loadApplicationContext();
 		countDownLatch.countDown();
 	}
 

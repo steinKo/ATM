@@ -42,6 +42,8 @@ public class WebTest {
 		applicationContext = Web.getApplicationContext();
 		assertNotNull(applicationContext);
 		assertTrue(applicationContext.containsBean("web"));
+		assertTrue(applicationContext.containsBean("bankRepository"));
+		
 
 	}
 

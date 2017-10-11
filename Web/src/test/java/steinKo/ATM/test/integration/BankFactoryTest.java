@@ -9,6 +9,7 @@ import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -24,11 +25,16 @@ public class BankFactoryTest {
 
 	@Test
 	public void test() {
-		ApplicationContext applicationContext;
-		applicationContext = new AnnotationConfigApplicationContext(Web.class);
+		
+		SpringApplicationBuilder springApplicationBuilder =new SpringApplicationBuilder();
+		String[] args;
+		args = new String[1];
+		args[0] = "";
+		
+		ApplicationContext applicationContext = springApplicationBuilder.sources(Web.class).run(args);
 		CountDownLatch countDownLatch = new CountDownLatch(1);
 		Runnable bankFactory;
-		bankFactory = new BankFactory(applicationContext, countDownLatch);
+		bankFactory = new BankFactory(applicationContext, springApplicationBuilder, countDownLatch);
 		Thread tread = new Thread(bankFactory);
 		tread.run();
 		tread.start();
