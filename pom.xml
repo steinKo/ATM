@@ -31,8 +31,6 @@
 <url>https://github.com/steinKo/ATM.git</url>
 </scm>
 
-    
-  
   <build>
   <pluginManagement>
     <plugins>
