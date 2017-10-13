@@ -2,8 +2,8 @@ package steinKo.ATM.feature.bank;
 
 
 import cucumber.api.java8.En;
-import steinKo.ATM.Config;
 
+import steinKo.ATM.DomainConfig;
 import steinKo.ATM.domain.Bank;
 import steinKo.ATM.domain.BankAccount;
 import steinKo.ATM.domain.Customer;
@@ -26,13 +26,13 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 
 
-@ContextConfiguration(classes=Config.class)
+
 @Scope("cucumber-glue")
 public class BankSteps implements En{
 	
 	private String name;
     private Customer customer;
-    private static AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(Config.class);
+    private static AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(DomainConfig.class);
 	private final static Logger logger = LoggerFactory.getLogger(BankSteps.class);
 	private Bank bank;
 	

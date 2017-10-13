@@ -7,7 +7,8 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import steinKo.ATM.Config;
+
+import steinKo.ATM.DomainConfig;
 import steinKo.ATM.Category.IntegrationTest;
 import steinKo.ATM.service.ATMService;
 
@@ -36,7 +37,7 @@ public class ATMServiceTest extends AbstactDataBaseTest{
 	    "<bank_account id = '2' balance = '1000'/>" +
 	    "<customer id = '1' name ='stein korsveien' person_Id = '23412334'  customer_number = '100' pin ='1234' bank_id = '1' bankaccout_id = '1' savings_account_id = '2'/>" +
 	     "</dataset>";
-		AbstactDataBaseTest.init(xmlDataSet,Config.class);
+		AbstactDataBaseTest.init(xmlDataSet,DomainConfig.class);
 		
 	}
   

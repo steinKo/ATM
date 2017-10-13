@@ -16,9 +16,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import steinKo.ATM.Config;
+
 import steinKo.ATM.Category.IntegrationTest;
 import steinKo.ATM.SystemTest.Web.FramWork.AbstractSystemTest;
+import steinKo.ATM.Web;
 import steinKo.ATM.domain.Bank;
 import steinKo.ATM.domain.BankAccount;
 import steinKo.ATM.domain.Customer;
@@ -33,7 +34,7 @@ public class WithdrawMonyeFromUserAccountTest extends AbstractSystemTest {
 		logger.info("start init");
 
 		AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(
-				Config.class);
+				Web.class);
 		BankRepository bankRepository = annotationConfigApplicationContext.getBean(BankRepository.class);
 		Bank bank = Bank.create();
 		bank.createCustomer("", 0L, 4251L, 1234);

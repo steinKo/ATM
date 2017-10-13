@@ -6,7 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import steinKo.ATM.Config;
+
+import steinKo.ATM.DomainConfig;
 import steinKo.ATM.Category.IntegrationTest;
 
 @Category(IntegrationTest.class)
@@ -16,7 +17,8 @@ public class ApplicationContextTest {
 	@Test
 	public void shouldDisplayeBeans()
 	{
-		annotationConfigApplicationContext = new AnnotationConfigApplicationContext(Config.class);
+		annotationConfigApplicationContext = new AnnotationConfigApplicationContext(DomainConfig.class);
+		
 		 String[] beans =annotationConfigApplicationContext.getBeanDefinitionNames();
         for (String bean : beans)
 		 {

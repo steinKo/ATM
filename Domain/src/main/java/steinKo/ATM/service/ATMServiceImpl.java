@@ -6,19 +6,16 @@ package steinKo.ATM.service;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Scope;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import steinKo.ATM.Config;
-import steinKo.ATM.SpringBootConfig;
+
 import steinKo.ATM.domain.ATM;
 import steinKo.ATM.domain.Bank;
 import steinKo.ATM.repository.BankRepository;

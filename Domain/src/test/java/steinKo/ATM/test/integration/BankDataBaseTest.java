@@ -13,7 +13,7 @@ import org.junit.experimental.categories.Category;
 
 
 import steinKo.ATM.test.integration.AbstactDataBaseTest;
-import steinKo.ATM.IntegrationTestConfig;
+import steinKo.ATM.DomainConfig;
 import steinKo.ATM.Category.IntegrationTest;
 import steinKo.ATM.domain.Bank;
 import steinKo.ATM.repository.BankRepository;
@@ -41,7 +41,7 @@ public class BankDataBaseTest extends AbstactDataBaseTest{
 	    "<customer/>" +
 	    "<bank_account/>" +
 	     "</dataset>";
-		AbstactDataBaseTest.init(xmlDataSet,IntegrationTestConfig.class);
+		AbstactDataBaseTest.init(xmlDataSet,DomainConfig.class);
 		
 	}
 	

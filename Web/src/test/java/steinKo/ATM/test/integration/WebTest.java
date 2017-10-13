@@ -40,6 +40,9 @@ public class WebTest {
 
 		Web.main(args);
 		applicationContext = Web.getApplicationContext();
+		String[] beans = applicationContext.getBeanDefinitionNames();
+		for (String bean:beans)
+			logger.info(bean);
 		assertNotNull(applicationContext);
 		assertTrue(applicationContext.containsBean("web"));
 		assertTrue(applicationContext.containsBean("bankRepository"));

@@ -6,9 +6,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import steinKo.ATM.TestDataAcessConfig;
+import steinKo.ATM.DomainConfig;
 
-@ContextConfiguration(classes=TestDataAcessConfig.class)
+
+@ContextConfiguration(classes=DomainConfig.class)
 @RunWith(SpringRunner.class)
 
 @DataJpaTest

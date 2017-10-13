@@ -10,27 +10,26 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
 
-import org.springframework.test.context.ContextConfiguration;
 
 
 import cucumber.api.java8.En;
-
+import steinKo.ATM.DomainConfig;
 import steinKo.ATM.domain.Bank;
 import steinKo.ATM.domain.BankAccount;
 import steinKo.ATM.domain.Customer;
 import steinKo.ATM.repository.BankRepository;
 import steinKo.ATM.service.ATMService;
-import steinKo.ATM.Config;
 
 
 
 
-@ContextConfiguration(classes=Config.class)
+
+
 @Scope("cucumber-glue")
 public class ATMSteps  implements En {
 	private String inntasted;
 	private int paKonto ;
-	private static AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(Config.class);
+	private static AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(DomainConfig.class);
 	
 	private  ATMService atm;
 	
@@ -79,7 +78,7 @@ public class ATMSteps  implements En {
 	{ 
 		
 		logger.info("Set up");
-		annotationConfigApplicationContext = new AnnotationConfigApplicationContext(Config.class);
+		annotationConfigApplicationContext = new AnnotationConfigApplicationContext(DomainConfig.class);
 		logger.info(annotationConfigApplicationContext.toString());
 		
 		
