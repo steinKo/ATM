@@ -1,4 +1,4 @@
-package steinKo.ATM.SystemTest.Web.FramWork;
+package steinKo.ATM.test.system.web.frameWork;
 
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.BeanUtils;

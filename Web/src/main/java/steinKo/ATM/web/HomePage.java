@@ -1,4 +1,4 @@
-package steinKo.ATM.presentaion.web;
+package steinKo.ATM.web;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
@@ -6,13 +6,14 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.spring.injection.annot.SpringBean;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.giffing.wicket.spring.boot.context.scan.WicketHomePage;
 
-import steinKo.ATM.service.ATMService;
+import steinKo.ATM.distribution.ATMClient;
+
 
 @WicketHomePage
 public class HomePage extends WebPage {
@@ -20,8 +21,10 @@ public class HomePage extends WebPage {
 	* 
 	*/
 	private static final long serialVersionUID = 1L;
-	@SpringBean
-	private ATMService atmService;
+	
+	
+	private ATMClient atmClient;
+	
 	TextField<String> pinAndAmount;
 	TextArea<String> message;
 
@@ -46,8 +49,8 @@ public class HomePage extends WebPage {
 			private static final long serialVersionUID = 1L;
 
 			public void onSubmit() {
-				atmService.buttomAPushed(pinAndAmount.getValue());
-				String atmServiceDisplay = atmService.display();
+				atmClient.pushButtonA(pinAndAmount.getValue());
+				String atmServiceDisplay = atmClient.display();
 				logger.info(atmServiceDisplay);
 				message.setDefaultModelObject(atmServiceDisplay);
 				pinAndAmount.setDefaultModelObject("");
@@ -73,7 +76,10 @@ public class HomePage extends WebPage {
 
 		pinAndAmount = new TextField<String>("pinAndAmount", Model.of(""));
 		logger.info(pinAndAmount.toString());
-		message = new TextArea<String>("message", Model.of(atmService.display()));
+		atmClient = new ATMClient();
+		logger.info(atmClient.toString());
+		logger.info(atmClient.display());
+		message = new TextArea<String>("message", Model.of(atmClient.display()));
 		logger.info(message.toString());
 
 		final Button b1 = new Button("1") {
@@ -178,7 +184,7 @@ public class HomePage extends WebPage {
 			public void onSubmit() {
 				String id = this.getId();
 				setValue(pinAndAmount, id);
-				;
+			
 			}
 		};
 

@@ -1,4 +1,4 @@
-package steinKo.ATM.SystemTest.Web;
+package steinKo.ATM.test.system.web;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,38 +14,18 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import steinKo.ATM.category.IntegrationTest;
+import steinKo.ATM.test.system.web.frameWork.AbstractSystemTest;
 
 
-import steinKo.ATM.Category.IntegrationTest;
-import steinKo.ATM.SystemTest.Web.FramWork.AbstractSystemTest;
-import steinKo.ATM.Web;
-import steinKo.ATM.domain.Bank;
-import steinKo.ATM.domain.BankAccount;
-import steinKo.ATM.domain.Customer;
-import steinKo.ATM.repository.BankRepository;
 
 @Category(IntegrationTest.class)
 public class WithdrawMonyeFromUserAccountTest extends AbstractSystemTest {
 	String url;
 	private final static Logger logger = LoggerFactory.getLogger(WithdrawMonyeFromUserAccountTest.class);
 
-	private void init() {
-		logger.info("start init");
-
-		AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(
-				Web.class);
-		BankRepository bankRepository = annotationConfigApplicationContext.getBean(BankRepository.class);
-		Bank bank = Bank.create();
-		bank.createCustomer("", 0L, 4251L, 1234);
-		Customer customer = bank.findCustomerByCustomerNumber(4251L);
-		BankAccount checkingAccount = customer.checkingAccount();
-		checkingAccount.gi(600);
-		bankRepository.save(bank);
-		logger.info("end init");
-		annotationConfigApplicationContext.close();
-
-	}
+	
 
 	@Before
 	public void setUp() throws Exception {
@@ -61,7 +41,7 @@ public class WithdrawMonyeFromUserAccountTest extends AbstractSystemTest {
 	public void shouldWithdraw() {
 		try {
 			logger.info("start shold withdraw");
-			init();
+			//init();
 			driver.get(url);
 			WebElement message = driver.findElement(By.name("message"));
 			logger.info(message.getAttribute("value"));

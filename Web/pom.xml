@@ -19,15 +19,6 @@
            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                   <execution>
-                       <goals>
-                         <goal>repackage</goal>
-                       </goals>
-                       </execution>
-                 </executions>
-                    
-            
             </plugin>
             <plugin>
                  <artifactId>maven-dependency-plugin</artifactId>
@@ -35,74 +26,77 @@
          </plugins>
         
     <resources>
-        <resource>
-            <filtering>false</filtering>
-            <directory>src/main/resources</directory>
-        </resource>
-        <resource>
-            <filtering>false</filtering>
-            <directory>src/main/java</directory>
-            <includes>
-                <include>**</include>
-            </includes>
-            <excludes>
-                <exclude>**/*.java</exclude>
-            </excludes>
-        </resource>
-    </resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
 </build>
 
 
     <dependencies>
-    <!-- https://mvnrepository.com/artifact/org.apache.wicket/wicket-core -->
-
-			<!-- https://mvnrepository.com/artifact/com.giffing.wicket.spring.boot.starter/wicket-spring-boot-starter -->
+    
   
-      
-  <dependency>
+      <!-- https://mvnrepository.com/artifact/com.giffing.wicket.spring.boot.starter/wicket-spring-boot-context -->
+   <!-- https://mvnrepository.com/artifact/com.giffing.wicket.spring.boot.starter/wicket-spring-boot-starter -->
+<dependency>
     <groupId>com.giffing.wicket.spring.boot.starter</groupId>
     <artifactId>wicket-spring-boot-starter</artifactId>
-</dependency>
-       
-        <dependency>
-           <groupId>org.apache.wicket</groupId>
-           <artifactId>wicket-spring</artifactId>
-           
-       </dependency>
-       
-       <dependency>
-           <groupId>org.apache.wicket</groupId>
-           <artifactId>wicket-core</artifactId>
-           
-       </dependency>
-       
-       
-       <dependency>
-        
-             <groupId>org.slf4j</groupId>
-             <artifactId>slf4j-api</artifactId>
-             
-        </dependency>
-        
-        <dependency>
-             <groupId>ch.qos.logback</groupId>
-              <artifactId>logback-classic</artifactId>
+    <version>2.0.4</version>
+    <exclusions>
+                    <exclusion>
+                        <!-- https://mvnrepository.com/artifact/org.slf4j/log4j-over-slf4j -->
+                           <groupId>org.slf4j</groupId>
+                            <artifactId>log4j-over-slf4j</artifactId>
+                 
+                    </exclusion>
+                    
+                    <exclusion>
+                        <!-- https://mvnrepository.com/artifact/org.slf4j/log4j-over-slf4j -->
+                           <groupId>org.slf4j</groupId>
+                            <artifactId>jul-to-slf4j</artifactId>
+                 
+                    </exclusion>
+                    
+                    <exclusion>
+                        <!-- https://mvnrepository.com/artifact/org.slf4j/log4j-over-slf4j -->
+                           <groupId>org.slf4j</groupId>
+                            <artifactId>jcl-over-slf4j</artifactId>
+                 
+                    </exclusion>
                
-         </dependency>
-        
+               </exclusions>
+          </dependency>
+<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
          <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot</artifactId>
-       </dependency>
-       
+                 <groupId>org.springframework.boot</groupId>
+                  <artifactId>spring-boot-starter-test</artifactId>
+                  
+           </dependency>
+   
     
-      
+         
+       
+       <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
       <dependency>
-           <groupId>org.springframework</groupId>
-           <artifactId>spring-test</artifactId>
-    
-      </dependency>
+         <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+   
+       </dependency>
+
+
        
+       
+            
+        
             
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
      <dependency>
@@ -110,81 +104,103 @@
          <artifactId>selenium-chrome-driver</artifactId>
       </dependency>
       
-      
       <dependency>
          <groupId>org.seleniumhq.selenium</groupId>
          <artifactId>selenium-api</artifactId>
-          
       </dependency>
       
+     
        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-          
-       </dependency>
-<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
-         
-      
-      <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-     </dependency>
-     
-     <dependency>
-         <groupId>com.giffing.wicket.spring.boot.starter</groupId>
-          <artifactId>wicket-spring-boot-context</artifactId>
-     
-     </dependency>
-     
-     <dependency>
-         <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-test</artifactId>
-     
-     </dependency>
-     
-     <dependency>
-         <groupId>org.springframework</groupId>
-          <artifactId>spring-context</artifactId>
-     
-     </dependency>
-     
-     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-autoconfigure -->
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>    
+    </dependency>
+
+       <dependency>
+           <groupId>org.junit.jupiter</groupId>
+           <artifactId>junit-jupiter-engine</artifactId>
+         </dependency>
+         <dependency>
+                <groupId>org.junit.vintage</groupId>
+                 <artifactId>junit-vintage-engine</artifactId>
+            </dependency>
+             <dependency>
+                    <groupId>org.junit.platform</groupId>
+                    <artifactId>junit-platform-launcher</artifactId>
+              </dependency>
+               <dependency>
+                   <groupId>org.junit.platform</groupId>
+                   <artifactId>junit-platform-runner</artifactId>
+           </dependency>
+           
+           <dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-context</artifactId>
+  
+</dependency>
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-autoconfigure</artifactId>
-   
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-core</artifactId>
+ 
+</dependency>
+<dependency>
+  <groupId>org.mockito</groupId>
+  <artifactId>mockito-core</artifactId>
+  
 </dependency>
 
-
-     
-     
-      <dependency>
-         <groupId> org.springframework</groupId>
-          <artifactId>spring-beans</artifactId>
-     
-     </dependency>
-     <dependency>
-           <groupId>org.springframework</groupId>
-           <artifactId>spring-core</artifactId>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-autoconfigure</artifactId>
  
-       </dependency>
-     <dependency>
-                 <groupId>com.h2database</groupId>
-                 <artifactId>h2</artifactId>
-   
-     </dependency>
+</dependency>
+<dependency>
+  <groupId>org.slf4j</groupId>
+  <artifactId>slf4j-api</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.apache.wicket</groupId>
+  <artifactId>wicket-core</artifactId>
+  
+</dependency>
+<dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-web</artifactId>
+ 
+</dependency>
+<dependency>
+  <groupId>com.giffing.wicket.spring.boot.starter</groupId>
+  <artifactId>wicket-spring-boot-context</artifactId>
+  
+</dependency>
+<dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-test</artifactId>
+  
+</dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot</artifactId>
+  
+</dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-test</artifactId>
+  
+</dependency>
+<dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-beans</artifactId>
+
+</dependency>
+
+      
      
-      <dependency>
-           <groupId>steinKo.ATM</groupId>
-          <artifactId>Domain</artifactId>
-          <version>0.0.1</version>
-       </dependency>
-       
-       
-       <dependency>
-           <groupId>steinKo.ATM</groupId>
-          <artifactId>Category</artifactId>
-          <version>0.0.1</version>
+      
+      
+		 <dependency>
+            <groupId>steinKo.ATM</groupId>
+            <artifactId>Category</artifactId>
+            <version>0.0.1</version>
        </dependency>
      
         

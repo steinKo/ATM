@@ -1,4 +1,4 @@
-package steinKo.ATM.test.unit;
+package steinKo.ATM.test.unit.web;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -12,38 +12,43 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import steinKo.ATM.Web;
-import steinKo.ATM.Category.UnitTest;
-import steinKo.ATM.presentaion.web.HomePage;
-import steinKo.ATM.service.ATMService;
+import steinKo.ATM.category.UnitTest;
+import steinKo.ATM.distribution.ATMClient;
+import steinKo.ATM.web.HomePage;
+
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Web.class)
+
 @Category(UnitTest.class)
+
 public class HomePageTest {
 
-	private static Logger logger = LoggerFactory.getLogger("HomePageTest");
+	private static Logger logger = LoggerFactory.getLogger(HomePage.class);
 
 	@Autowired
 	private WebApplication wicketApplication;
 
 	private WicketTester tester;
 
-	@MockBean
-	private ATMService atmServiceMock;
+	@Mock
+	private ATMClient atmServiceMock;
 	private FormTester contentFormTester;
 	private FormTester menuFormTester;
 
 	@Before
 	public void setUp() {
 		logger.info("start mock");
+		logger.info(wicketApplication.getName());
 		tester = new WicketTester(wicketApplication);
 		logger.info("init wiket tester");
 		when(atmServiceMock.display()).thenReturn("Enter customer number\nA = OK");

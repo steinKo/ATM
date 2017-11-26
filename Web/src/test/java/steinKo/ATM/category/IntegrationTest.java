@@ -1,4 +1,4 @@
-package steinKo.ATM.Category;
+package steinKo.ATM.category;
 
 public interface IntegrationTest {
 
