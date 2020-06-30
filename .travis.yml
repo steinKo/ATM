@@ -1,18 +1,6 @@
 language: java
 jdk: oraclejdk8
-before_install:
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
-addons:
-  sonarqube:
-    organization: steinko-github
-    token:
-      secure: bedd53752066ff9fb6d937ef01e864ac82317bcd
-    branches:
-    - master
+ 
 script:
-- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -DheadLess=true sonar:sonar
-deploy:
-  provider: heroku
-  api_key:
-    secure: XCxgyR30CGMPqnFeVL+EYRXXtb1DeqDps88og5OPFJeWZlFp6Ck6Tlbn+XFF36YCd2DSPjtMD2OlSZYTgiqjkotColBJoc5SgymZTEiA4ce+iTjsuGUMTlV4tLSci3k4rJfIAXe1uuOxB1HUQTbXBe1GZjdgaQiQ8RTKhHKRKyvTvkgm+mE9+3A395WCCEsf1WojyvrsCY/j7s0v1nqSjjOyFGdklIEBphfIGE/2omw6yePId1FVW+tTC2JuK//9nn/hZdmdYeBBZcdJuKvlivwkcr9Ws40jxIKZrJeSsLVrcaWvBVmZP5WpFTigRLFXzOoBp1HVBZN64iM3osG/83GxOCbJXpFDa+Rtp3Xi8KgRa69+0DgRBZwTjc2i8BfLjIolhUnffHjfmbEdQEa8duxYHq/zAdKIvuBjbVc86MERZ6WB23e8efm3uW1o7mstHJNdJoB/OngUBYYpnrjL34Tn5xARRSDaPh3CXq0AgJKOd3VFSzKzTMyXnVoCZeZvLNTIQCDEjP2Ekz0cumVOc9Ig8ygB5sgJQYwSxKTBD+tCTy0JCv+PG0lFDP1joSMRWuNANawsJgP1aOQOOR8diZiYsohf6OpAUrdu17NuKdDWM2kKMWZlPNON83h12Bet2nt0BiKueAQDZkQ8Gur0Yy3ciTa6Jq+mSJDOtLiCG6Y=
+- gradle  check
+- gradle  appengineDeploy

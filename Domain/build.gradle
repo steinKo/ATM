@@ -1,0 +1,64 @@
+buildscript {    // Configuration for building
+  repositories {
+    jcenter()    // Bintray's repository - a fast Maven Central mirror & more
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'com.google.cloud.tools:appengine-gradle-plugin:2.1.0'    // Latest 1.x.x release
+  }
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.3.0.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'com.google.cloud.tools.appengine-appyaml'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.3.0.RELEASE'
+	implementation 'net.logstash.logback:logstash-logback-encoder:6.3'
+
+	testImplementation 'io.rest-assured:spring-mock-mvc:4.3.0'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.3.0.RELEASE'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+appengine {
+  
+
+  stage {
+      appEngineDirectory  'config'
+      dockerDirectory 'config'
+      artifact  'build/libs/atm.jar'
+      
+    }
+  deploy {   
+    appEngineDirectory = './'
+    stopPreviousVersion = true  // default - stop the current version
+    promote = true              // default - & make this the current version
+    projectId = 'springboot22'
+    version = '1'
+  }
+
+}
+
+task copyBuild(type: Copy) {
+    from 'build/libs/atm.jar'
+    into 'config/'
+}
+
+copyBuild.dependsOn build
+appengineDeploy.dependsOn copyBuild
